@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-bs-theme="dark">
 
 <head>
     <meta charset="utf-8">
@@ -15,6 +15,9 @@
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.datatables.net/2.0.8/css/dataTables.dataTables.css" />
+
+    <script src="https://cdn.datatables.net/2.0.8/js/dataTables.js"></script>
     <style>
         body {
             color: #404E67;
@@ -91,7 +94,7 @@
 
 <body>
     <div class="" style="padding: 0 25px;">
-        <table class="table table-bordered">
+        <table id="backend1" class="table table-bordered">
             <thead>
                 <tr>
                     <th>ID</th>
@@ -117,7 +120,7 @@
                         Gender: {{ $value->gender }}<br>
                         Marital Status: {{$value->marital_status }}
                     </td>
-                    
+
                     <td>
                         Mobile: {{ $value->mobile_number }}<br>
                         Email: {{ $value->email }}<br>
@@ -203,5 +206,15 @@
             </tbody>
         </table>
     </div>
+    <script>
+        let table = new DataTable('#backend1', {});
+        let prefers = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        let html = document.querySelector('html');
+
+        html.classList.add(prefers);
+        html.setAttribute('data-bs-theme', prefers);
+    </script>
+    
 </body>
+
 </html>
